@@ -105,9 +105,11 @@ class Chef
 
           # Create the mount point
           dir_resource = directory mount_spec[:location] do
-            mode 0755
-            owner 'root'
-            group 'root'
+            #####deliberately removing these settings, so that the wrapper can have a chance of setting them.
+            # mode 0755 
+            # owner 'root' 
+            # group 'root' 
+            ###############
             recursive true
             action :nothing
             not_if { Pathname.new(mount_spec[:location]).mountpoint? }
